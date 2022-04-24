@@ -26,8 +26,7 @@ const FeaturedChart = (props: Props) => {
             <p className={classes.title}>Total sales today</p>
             <p className={classes.amount}>$500</p>
             <p className={classes.desc}>
-               Previous transactions processing. Last payments may not be
-               included.
+               Latest transactions may still be processing.
             </p>
             <div className={classes.summary}>
                <div className={classes.item}>
