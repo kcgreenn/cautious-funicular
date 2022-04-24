@@ -1,4 +1,6 @@
 import React from 'react';
+import FeaturedChart from '../../components/charts/featured/FeaturedChart';
+import NormalChart from '../../components/charts/normal/NormalChart';
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Widget from '../../components/widget/Widget';
@@ -17,7 +19,10 @@ const Home = () => {
                <Widget type="earnings" />
                <Widget type="balance" />
             </div>
-            <div className={classes.charts}></div>
+            <div className={classes.charts}>
+               <FeaturedChart />
+               <NormalChart />
+            </div>
          </div>
       </div>
    );

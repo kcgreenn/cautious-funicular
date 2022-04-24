@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import cx from 'classnames';
 
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -9,18 +9,27 @@ import ShoppingCartOutlined from '@mui/icons-material/ShoppingCartOutlined';
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
 import classes from './Widget.module.scss';
 import { spacing } from '@mui/system';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { SvgIconTypeMap } from '@mui/material';
 
-type Props = {
+type WidgetProps = {
    type: String;
 };
 
-const Widget = ({ type }: Props) => {
-   let data = {
+type WidgetData = {
+   title: string;
+   isMoney: boolean;
+   link: string;
+   linkText: string;
+   icon?: React.ReactElement;
+};
+
+const Widget = ({ type }: WidgetProps): JSX.Element => {
+   let data: WidgetData = {
       title: '',
       isMoney: false,
       link: '',
       linkText: '',
-      icon: {},
    };
 
    // temporary
@@ -39,7 +48,7 @@ const Widget = ({ type }: Props) => {
                   className={classes.icon}
                   style={{
                      color: 'crimson',
-                     backgroundColor: ' rgba(255, 0, 0, 0.2',
+                     backgroundColor: ' rgba(255, 0, 0, 0.2)',
                   }}
                />
             ),
@@ -56,7 +65,7 @@ const Widget = ({ type }: Props) => {
                   className={classes.icon}
                   style={{
                      color: 'goldenrod',
-                     backgroundColor: ' rgba(216, 165, 32, 0.2',
+                     backgroundColor: ' rgba(216, 165, 32, 0.2)',
                   }}
                />
             ),
@@ -73,7 +82,7 @@ const Widget = ({ type }: Props) => {
                   className={classes.icon}
                   style={{
                      color: 'green',
-                     backgroundColor: ' rgba(0, 128, 0, 0.2',
+                     backgroundColor: ' rgba(0, 128, 0, 0.2)',
                   }}
                />
             ),
@@ -90,7 +99,7 @@ const Widget = ({ type }: Props) => {
                   className={classes.icon}
                   style={{
                      color: 'purple',
-                     backgroundColor: ' rgba(128, 0, 128, 0.2',
+                     backgroundColor: ' rgba(128, 0, 128, 0.2)',
                   }}
                />
             ),
