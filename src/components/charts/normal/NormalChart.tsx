@@ -4,7 +4,6 @@ import {
    AreaChart,
    Area,
    XAxis,
-   YAxis,
    CartesianGrid,
    Tooltip,
    ResponsiveContainer,
@@ -12,7 +11,10 @@ import {
 
 import classes from './NormalChart.module.scss';
 
-type Props = {};
+type Props = {
+   aspect: number;
+   title: string;
+};
 
 type ChartData = {
    name: string;
@@ -21,7 +23,7 @@ type ChartData = {
    amt: number;
 };
 
-const NormalChart = (props: Props) => {
+const NormalChart = ({ aspect, title }: Props) => {
    const data: Array<ChartData> = [
       {
          name: 'Jan',
@@ -63,8 +65,8 @@ const NormalChart = (props: Props) => {
 
    return (
       <div className={classes.normal}>
-         <div className={classes.title}>Last 6 Months Revenue</div>
-         <ResponsiveContainer width="100%" height="100%">
+         <div className={classes.title}>{title}</div>
+         <ResponsiveContainer width="100%" aspect={aspect}>
             <AreaChart
                width={500}
                height={400}

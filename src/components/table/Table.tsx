@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from 'classNames';
+import cx from 'classnames';
 
 import MuiTable from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
