@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
@@ -12,33 +13,48 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
+import cx from 'classnames';
+
 import classes from './Sidebar.module.scss';
+import { DarkModeContext } from '../../context/darkModeContext';
 
 type Props = {};
 
 const Sidebar = (props: Props) => {
+   const { state, dispatch } = useContext(DarkModeContext);
+
    return (
-      <div className={classes.sidebar}>
+      <div
+         className={cx(classes.sidebar, state.darkMode ? classes.dark : null)}
+      >
          <div className={classes.top}>
-            <span className={classes.logo}>Funicular</span>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+               <span className={classes.logo}>Admin Panel</span>
+            </Link>
          </div>
          <hr />
          <div className={classes.center}>
             <ul>
                <p className={classes.title}>Main</p>
-               <li>
-                  <DashboardIcon className={classes.icon} />
-                  <span>Dashboard</span>
-               </li>
+               <Link to="/" style={{ textDecoration: 'none' }}>
+                  <li>
+                     <DashboardIcon className={classes.icon} />
+                     <span>Dashboard</span>
+                  </li>
+               </Link>
                <p className={classes.title}>Lists</p>
-               <li>
-                  <PersonIcon className={classes.icon} />
-                  <span>Users</span>
-               </li>
-               <li>
-                  <InventoryIcon className={classes.icon} />
-                  <span>Products</span>
-               </li>
+               <Link to="/users" style={{ textDecoration: 'none' }}>
+                  <li>
+                     <PersonIcon className={classes.icon} />
+                     <span>Users</span>
+                  </li>
+               </Link>
+               <Link to="/products" style={{ textDecoration: 'none' }}>
+                  <li>
+                     <InventoryIcon className={classes.icon} />
+                     <span>Products</span>
+                  </li>
+               </Link>
                <li>
                   <CreditCardIcon className={classes.icon} />
                   <span>Orders</span>
@@ -77,8 +93,18 @@ const Sidebar = (props: Props) => {
             </ul>
          </div>
          <div className={classes.bottom}>
-            <div className={classes.colorOptions}></div>
-            <div className={classes.colorOptions}></div>
+            <a
+               className={classes.colorOptions}
+               href="#"
+               title="Light Mode"
+               onClick={(e) => dispatch({ type: 'LIGHT' })}
+            />
+            <a
+               className={classes.colorOptions}
+               href="#"
+               title="Dark Mode"
+               onClick={(e) => dispatch({ type: 'DARK' })}
+            />
          </div>
       </div>
    );

@@ -1,5 +1,4 @@
-import React from 'react';
-import cx from 'classnames';
+import React, { useContext } from 'react';
 
 import MuiTable from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,6 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import classes from './Table.module.scss';
+import cx from 'classnames';
+import { DarkModeContext } from '../../context/darkModeContext';
 
 type Props = {};
 
@@ -25,6 +26,7 @@ type RowsType = {
 };
 
 const Table = (props: Props) => {
+   const { state, dispatch } = useContext(DarkModeContext);
    const rows: Array<RowsType> = [
       {
          id: 1143155,
@@ -79,7 +81,7 @@ const Table = (props: Props) => {
    ];
 
    return (
-      <div className={classes.table}>
+      <div className={cx(classes.table, state.darkMode ? classes.dark : null)}>
          <TableContainer component={Paper}>
             <MuiTable sx={{ minWidth: 650 }} aria-label="simple table">
                <TableHead>
@@ -115,7 +117,12 @@ const Table = (props: Props) => {
                            '&:last-child td, &:last-child th': { border: 0 },
                         }}
                      >
-                        <TableCell component="th" scope="row" align="center">
+                        <TableCell
+                           component="th"
+                           scope="row"
+                           align="center"
+                           className={classes.tableCell}
+                        >
                            {row.id}
                         </TableCell>
                         <TableCell className={classes.tableCell} align="center">

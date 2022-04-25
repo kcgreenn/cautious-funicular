@@ -1,0 +1,30 @@
+.app.dark {
+  background-color: #333;
+  color: rgb(156, 156, 156);
+
+  .sidebar{
+    background-color: #111;
+  }
+
+.navbar{
+  color:#999;
+  border-color:#333;
+
+.search{
+  border-color: gray;
+}
+}
+
+  .chartGrid {
+    stroke: rgba(228, 228, 228, 0.2129);
+  }
+
+  .table{
+    background-color:#111;
+
+    .tableCell{
+      color: gray;
+    }
+  }
+}
+

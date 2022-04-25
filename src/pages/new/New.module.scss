@@ -2,6 +2,12 @@
   width: 100%;
   display: flex;
 
+  &.dark {
+    input {
+      background-color: #555;
+    }
+  }
+
   .newContainer {
     flex: 6;
 
@@ -32,7 +38,7 @@
       .right {
         flex: 2;
 
-        form {
+        .form {
           display: flex;
           flex-wrap: wrap;
           justify-content: space-around;
@@ -68,12 +74,12 @@
           }
 
           button {
-            width: 256px;
+            width: 40%;
             border-radius: 5px;
             border: 0.5px solid lightgray;
             background-color: teal;
             color: white;
-            padding: 12px 24px;
+            padding: 12px 0;
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;

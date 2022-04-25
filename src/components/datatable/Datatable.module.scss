@@ -1,6 +1,53 @@
 .datatable {
   height:631px;
-  width:100%;
+  width:70%;
+
+  &.dark{
+    p{
+      color:white;
+    }
+    button{
+      color:white;
+    }
+    svg{
+      color:white;
+    }
+    color:white;
+    .MuiDataGrid-cell{
+      color:white;
+    }
+    .dataTableTitle{
+      color:white;
+    }
+    .cellWithImg{
+      color:white;
+    }
+    .cellWithStatus{
+      color:white;
+    }
+    .cellAction{
+      .viewButton{
+        color:lightblue;
+        border-color: lightblue
+      }
+      .deleteButton{
+        border-color:crimson;
+      }
+    }
+  }
+
+  .dataTableTitle{
+    border-radius: 5px;
+    border: 0.5px solid green;
+    background-color:green;
+    color:white;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    width: 150px;
+
+  }
 
   .cellWithImg {
     display: flex;

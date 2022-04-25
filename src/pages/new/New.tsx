@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+import { Form, Formik, useFormik } from 'formik';
+
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
 import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
 
 import classes from './New.module.scss';
-import { Input } from '../../data/formSource';
+import { IProductInputs, IUserInputs } from '../../data/formSource';
 
-type Props = {
-   inputs: Array<Input>;
+interface Props {
+   inputs: IUserInputs | IProductInputs;
    title: string;
-};
+}
 
 const New = ({ inputs, title }: Props) => {
+   const initialValues: IUserInputs | IProductInputs = inputs;
    const [file, setFile] = useState<File | null>(null);
 
    return (
@@ -34,7 +37,27 @@ const New = ({ inputs, title }: Props) => {
                   />
                </div>
                <div className={classes.right}>
-                  <form>
+                  <Formik
+                     initialValues={initialValues}
+                     onSubmit={(values, actions) => {
+                        console.log({ values, actions });
+                        alert(JSON.stringify(values, null, 2));
+                        actions.setSubmitting(false);
+                     }}
+                  >
+                     <Form></Form>
+                  </Formik>
+               </div>
+            </div>
+         </div>
+      </div>
+   );
+};
+
+export default New;
+
+{
+   /* <form>
                      <div className={classes.formInput}>
                         <label htmlFor="image">
                            Image:{' '}
@@ -68,12 +91,5 @@ const New = ({ inputs, title }: Props) => {
                         </div>
                      ))}
                      <button type="submit">Send</button>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-   );
-};
-
-export default New;
+                  </form> */
+}

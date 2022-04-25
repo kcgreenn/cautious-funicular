@@ -1,7 +1,15 @@
 .table {
 
-  .tableCell {
+  &.dark {
+    background-color: #333;
+    .tableCell{
+      background-color: #333;
+      color:#dedede;
+    }
+  }
 
+  .tableCell {
+    
     .cellWrapper {
       display: flex;align-items: center;
 
